@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Fin Wealth Grow</title>
+    <link rel="icon" href="./images/edited-fin-wealth.png" type="image/png">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="images/edited-fin-wealth.png" alt="FinWealth Grow Logo" class="logo-image">
+                <div class="logo-text">FIN WEALTH <span class="grow-text">GROW</span></div>
+            </div>
+            <nav class="right-section">
+                <a href="home.html">Home</a>
+                <a href="#" class="selected">About us</a>
+                <a href="#">Courses</a>
+                <a href="#">Tax</a>
+                <a href="#">Trade Mark</a>
+                <a href="https://wa.me/919074001420" target="_blank" class="join-us">Join Us</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h2>ABOUT US,</h2>
+        <section class="about-us">
+            <h2>Our Vision and Goal</h2>
+            <p class="pop-up">FinWealth Grow Pvt. Ltd., founded in 2020, aims to promote financial literacy and independence through the stock market. We focus mainly on Stock Market Training, Tax Consultancy Services, Trademark Registration, and Equity Portfolio Management Services.</p>
+            <p class="pop-up">As part of our Stock Market Training Program, we offer online classes, webinars, workshops, and recorded classes.</p>
+            <p class="pop-up">FinWealth Grow Tax Solutions aims to provide solutions for all individual and corporate tax issues. Our services include ITR filing, GST registration, GST return filing, TDS return filing, tax planning advisory, and income tax appeals.</p>
+            <p class="pop-up">FinWealth Grow Pvt. Ltd. protects your intellectual properties. Secure your trademark, barcode, and copyright registration with us.</p>
+        </section>
+    </main>
+    
+    <div class="social-icons">
+        <a href="https://wa.me/919074001420" target="_blank">
+            <img src="images/whatsapp.png" alt="WhatsApp">
+         </a>
+        <a href="https://www.instagram.com/finwealth_grow/?igsh=MXVqcHExbzM1bnp3aA%3D%3D&utm_source=qr" target="_blank">
+            <img src="images/instagram.png" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61561325323131"  target="_blank">
+            <img src="images/facebook (1).png" alt="Facebook">
+        </a>
+        <a href="https://youtube.com/@strategymastery-me9wl?si=11tJIy2An1RimnJq"  target="_blank">
+            <img src="images/youtube.png" alt="YouTube">
+        </a>
+         <a href="https://x.com/tradeadvthomas" target="_blank">
+            <img src="images/twitter.png" alt="X">
+         </a>
+    </div>
+
+    <footer>
+        <div class="whatsApp-footer">
+            <a href="https://wa.me/919074001420" target="_blank">
+                <img src="images/whatsapp.png" alt="WhatsApp">
+             </a>
+        </div>
+        <div class="footer-container">
+            <div class="address">
+                <h4>Contact Us</h4>
+                <p>Fin Wealth Grow</p>
+                <p>Address- Rajendran Complex , 2 nd</p>
+                <p>cross , Gowda Layout, BTM 1st</p>
+                <p>stage , MADIWALA , BANGALORE</p>
+                <p>-560029</p>
+                <p>Email: masterystrategy@gmail.com</p>
+                <p>Whatsup - 9074001420</p>
+            </div>
+            <div class="quick-links">
+                <h4>Quick Links</h4>
+                <a href="#">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="#">Courses</a>
+                <a href="tax.html">Tax</a>
+                <a href="#">Trade Mark</a>
+                <a href="#">Join Us</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Fin Wealth Grow. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const paragraphs = document.querySelectorAll(".pop-up");
+        paragraphs.forEach((paragraph, index) => {
+            setTimeout(() => {
+                paragraph.classList.add("visible");
+            }, index * 300); // Adjust the delay (500ms) as needed
+        });
+    });
+</script>

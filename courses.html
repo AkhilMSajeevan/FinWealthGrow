@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fin Wealth Grow</title>
     <link rel="icon" href="./images/edited-fin-wealth.png" type="image/png">
-    <link href="style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -15,21 +15,21 @@
                 <!-- <div class="logo-text">FIN WEALTH <span class="grow-text">GROW</span></div> -->
             </div>
             <nav class="right-section">
-                <a href="#">Home</a>
+                <a href="home.html">Home</a>
                 <a href="about.html">About us</a>
-                <a href="courses.html">Courses</a>
+                <a href="#">Courses</a>
                 <a href="tax.html">Tax</a>
                 <a href="trademark.html">Trade Mark</a>
                 <a href="https://wa.me/919074001420" target="_blank" class="btn">Join Us</a>
             </nav>
         </div>
     </header>
-    <main>
+    <!-- <main>
 
         <h2>WELCOME TO,</h2>
         <h1>FIN WEALTH <span class="highlight">GROW</span></h1>
         <p class="tagline">UNLOCK YOUR FINANCIAL FREEDOM!</p>
-    </main>
+    </main> -->
 
     <div class="text">
         <span class="large">COURSES</span> <span class="medium">WE OFFER</span>
@@ -74,14 +74,14 @@
             <li>How to select a stock for Swing Trade</li>
           </ul>
           <div class="price">Rs:599/-</div>
-          <!-- <div class="rating">
-          <span class="star">&#9733;</span>
+          <div class="rating">
+          <!-- <span class="star">&#9733;</span>
             <span class="star">&#9733;</span>
             <span class="star">&#9733;</span>
             <span class="star">&#9734;</span>
             <span class="star">&#9734;</span>
-            &#9733; is a filled star, &#9734; is an empty star
-        </div> -->
+            &#9733; is a filled star, &#9734; is an empty star -->
+        </div>
         </div>
         <div class="course-box">
           <h3>OPTION BUYING ADVANCED STRATEGY</h3>
@@ -109,7 +109,66 @@
         </div>
       </div>
         
-      
+      <div class="faq-section">
+        <div class="faq-title">FAQ's</div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    What is the duration of the Stock Market A-Z course?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    The Stock Market A-Z course has a duration of 3 months with 24*7 doubt clearing support.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Do you offer recorded classes for the Swing Trade Strategy course?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes, the Swing Trade Strategy course includes both recorded and live classes.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    What is the price of the Option Buying Advanced Strategy course?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    The Option Buying Advanced Strategy course is priced at Rs. 1499/-.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    How can I join the courses?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    You can join the courses by clicking on the "Join Us" button and following the instructions.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is there any prerequisite knowledge required for the courses?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    No prerequisite knowledge is required. Our courses are designed for beginners as well as advanced learners.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Do you provide any certification after course completion?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes, we provide a certification of completion for all our courses.
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="social-icons">
         <a href="https://wa.me/919074001420" target="_blank">
             <img src="images/whatsapp.png" alt="WhatsApp">
@@ -127,29 +186,6 @@
          <a href="https://x.com/tradeadvthomas" target="_blank">
             <img src="images/twitter.png" alt="X">
          </a>
-    </div>
-    <div class="wrapper">
-        <div class="quote">
-            <h2><span>passion</span><br> <span class="green">patience</span><br><span>persistence</span><br><span class="green">profit</span></h2>
-        </div>
-        <div class="container">
-            <div class="stat-box">
-                <div id="students" class="stat-number">2500+</div>
-                <div class="stat-label"><h3>Students</h3></div>
-            </div>
-            <div class="stat-box">
-                <div id="taxClients" class="stat-number">1500+</div>
-                <div class="stat-label"><h3>Tax Clients</h3></div>
-            </div>
-            <div class="stat-box">
-                <div id="cities" class="stat-number">5+</div>
-                <div class="stat-label"><h3>Cities</h3></div>
-            </div>
-            <div class="stat-box">
-                <div id="tradeMarkReg" class="stat-number">1000+</div>
-                <div class="stat-label"><h3>Trade Mark Reg</h3></div>
-            </div>
-        </div>
     </div>
     <footer>
         <div class="whatsApp-footer">
@@ -185,127 +221,12 @@
 </body>
 </html>
 
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const boxes = document.querySelectorAll('.stat-box');
-        const speed = 200; // Higher value for slower counting
-
-        const options = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const countUp = (counter) => {
-            const target = +counter.getAttribute('data-target');
-            let count = 0;
-            const increment = target / speed;
-
-            const updateCount = () => {
-                count += increment;
-                if (count < target) {
-                    counter.innerText = Math.ceil(count) + '+';
-                    requestAnimationFrame(updateCount);
-                } else {
-                    counter.innerText = target + '+';
-                }
-            };
-
-            updateCount();
-        };
-
-        const callback = (entries, observer) => {
-            entries.forEach(entry => {
-                const box = entry.target;
-                const counter = box.querySelector('.stat-number');
-                if (entry.isIntersecting) {
-                    console.log(`Box ${box} is now visible. Starting count up.`);
-                    box.classList.add('visible');
-                    counter.setAttribute('data-target', counter.getAttribute('data-final') || counter.innerText.replace('+', ''));
-                    counter.setAttribute('data-final', counter.getAttribute('data-target')); // Store the final target value
-                    counter.innerText = '0+';
-                    countUp(counter);
-                } else {
-                    console.log(`Box ${box} is not visible. Counter reset.`);
-                    box.classList.remove('visible');
-                    counter.innerText = '0+'; // Reset the counter when it's out of view
-                }
+ <script>
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
             });
-        };
-
-        const observer = new IntersectionObserver(callback, options);
-
-        boxes.forEach(box => {
-            observer.observe(box);
         });
-    });
-   
 </script>
 
-<!-- star displying when move to bottom -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const stars = entry.target.querySelectorAll('.star');
-            stars.forEach(star => star.classList.add('visible'));
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.9 });
-    
-      document.querySelectorAll('.course-box').forEach(box => {
-        observer.observe(box);
-      });
-    });
-    </script>
-    
-<!-- Cources we offer -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-  
-      const text = document.querySelector('.text');
-      observer.observe(text);
-  
-      // Previous JavaScript for course box animations remains the same
-    });
-  </script>
-
-
-<script>
-    function createMovers() {
-        const background = document.getElementById('movingBackground');
-        const numMovers = 20;
-
-        for (let i = 0; i < numMovers; i++) {
-            const mover = document.createElement('div');
-            mover.classList.add('mover');
-            
-            const size = Math.random() * 50 + 10; // Random size between 10px and 60px
-            mover.style.width = `${size}px`;
-            mover.style.height = `${size}px`;
-            
-            const duration = Math.random() * 15 + 5; // Random duration between 5s and 20s
-            mover.style.animationDuration = `${duration}s`;
-            
-            const startPositionX = Math.random() * 100;
-            const startPositionY = Math.random() * 100;
-            mover.style.left = `${startPositionX}vw`;
-            mover.style.top = `${startPositionY}vh`;
-            
-            background.appendChild(mover);
-        }
-    }
-
-    createMovers();
-</script>

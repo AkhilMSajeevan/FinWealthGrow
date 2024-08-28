@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fin Wealth Grow</title>
     <link rel="icon" href="./images/edited-fin-wealth.png" type="image/png">
-    <link href="style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -33,7 +33,7 @@
 
     <div class="text">
         <span class="large">COURSES</span> <span class="medium">WE OFFER</span>
-      </div>
+    </div>
 
     <div class="course-container">
         <div class="course-box">
@@ -52,15 +52,20 @@
             <li>Candlestick Pattern</li>
             <li>Support & Resistance</li>
           </ul>
-          <div class="price">Rs:1599/-</div>
-          <!-- <div class="rating">
-            <span class="star">&#9733;</span>
+          <div class="price">
+            <span class="discounted-price">Rs: 999/-</span>
+            <span class="original-price">Rs: 1999/-</span>
+        </div>
+          <a href="https://wa.me/919074001420" class="whatsapp-link">Contact us on WhatsApp</a><br>
+          <div class="warning">nb:Verify course content quality</div>
+           <div class="rating">
+            <!-- <span class="star">&#9733;</span>
             <span class="star">&#9733;</span>
             <span class="star">&#9733;</span>
             <span class="star">&#9733;</span>
             <span class="star">&#9734;</span>
-            &#9733; is a filled star, &#9734; is an empty star -->
-          <!-- </div> -->
+            &#9733; is a filled star, &#9734; is an empty star  -->
+          </div>
         </div>
         <div class="course-box">
           <h3>SWING TRADE STRATEGY/ MONTHLY INCOME STRATEGY</h3>
@@ -73,15 +78,20 @@
             <li>Technical Analysis</li>
             <li>How to select a stock for Swing Trade</li>
           </ul>
-          <div class="price">Rs:599/-</div>
-          <!-- <div class="rating">
-          <span class="star">&#9733;</span>
+          <div class="price">
+            <span class="discounted-price">Rs: 599/-</span>
+            <span class="original-price">Rs: 799/-</span>
+        </div>
+          <a href="https://wa.me/919074001420" class="whatsapp-link">Contact us on WhatsApp</a><br>
+          <div class="warning">nb:Verify course content quality</div>
+          <div class="rating">
+          <!-- <span class="star">&#9733;</span>
             <span class="star">&#9733;</span>
             <span class="star">&#9733;</span>
             <span class="star">&#9734;</span>
             <span class="star">&#9734;</span>
-            &#9733; is a filled star, &#9734; is an empty star
-        </div> -->
+            &#9733; is a filled star, &#9734; is an empty star -->
+        </div>
         </div>
         <div class="course-box">
           <h3>OPTION BUYING ADVANCED STRATEGY</h3>
@@ -97,17 +107,23 @@
             <li>Scalping Setup</li>
             <li>Trading Psychology</li>
           </ul>
-          <div class="price">Rs:1499/-</div>
-          <!-- <div class="rating">
+          <div class="price">
+            <span class="discounted-price">Rs: 1499/-</span>
+            <span class="original-price">Rs: 1899/-</span>
+        </div>
+          <a href="https://wa.me/919074001420" class="whatsapp-link">Contact us on WhatsApp</a><br>
+          <div class="warning">nb:Verify course content quality</div>
+          <div class="rating">
+            <!-- <span class="star">&#9733;</span>
             <span class="star">&#9733;</span>
             <span class="star">&#9733;</span>
             <span class="star">&#9733;</span>
             <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            &#9733; is a filled star, &#9734; is an empty star -->
-          <!-- </div> -->
+            &#9733; is a filled star, &#9734; is an empty star  -->
+           </div> 
         </div>
       </div>
+    
         
       
     <div class="social-icons">
@@ -187,60 +203,77 @@
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const boxes = document.querySelectorAll('.stat-box');
-        const speed = 200; // Higher value for slower counting
+   document.addEventListener('DOMContentLoaded', () => {
+    const boxes = document.querySelectorAll('.stat-box');
+    const speed = 200; // Higher value for slower counting
 
-        const options = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
+    const options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const countUp = (counter) => {
+        const target = +counter.getAttribute('data-target');
+        let count = 0;
+        const increment = target / speed;
+
+        const updateCount = () => {
+            count += increment;
+            if (count < target) {
+                counter.innerText = Math.ceil(count) + '+';
+                counter.animationId = requestAnimationFrame(updateCount);
+            } else {
+                counter.innerText = target + '+';
+            }
         };
 
-        const countUp = (counter) => {
-            const target = +counter.getAttribute('data-target');
-            let count = 0;
-            const increment = target / speed;
+        updateCount();
+    };
 
-            const updateCount = () => {
-                count += increment;
-                if (count < target) {
-                    counter.innerText = Math.ceil(count) + '+';
-                    requestAnimationFrame(updateCount);
-                } else {
-                    counter.innerText = target + '+';
-                }
-            };
+    const startCounter = (box) => {
+        const counter = box.querySelector('.stat-number');
+        // Cancel any ongoing animation
+        if (counter.animationId) {
+            cancelAnimationFrame(counter.animationId);
+        }
+        counter.innerText = '0+';
+        countUp(counter);
+    };
 
-            updateCount();
-        };
-
-        const callback = (entries, observer) => {
-            entries.forEach(entry => {
-                const box = entry.target;
+    const callback = (entries, observer) => {
+        entries.forEach(entry => {
+            const box = entry.target;
+            if (entry.isIntersecting) {
+                console.log(`Box ${box} is now visible. Starting count up.`);
+                box.classList.add('visible');
+                startCounter(box);
+            } else {
+                console.log(`Box ${box} is not visible.`);
+                box.classList.remove('visible');
+                // Reset the counter when it's out of view
                 const counter = box.querySelector('.stat-number');
-                if (entry.isIntersecting) {
-                    console.log(`Box ${box} is now visible. Starting count up.`);
-                    box.classList.add('visible');
-                    counter.setAttribute('data-target', counter.getAttribute('data-final') || counter.innerText.replace('+', ''));
-                    counter.setAttribute('data-final', counter.getAttribute('data-target')); // Store the final target value
-                    counter.innerText = '0+';
-                    countUp(counter);
-                } else {
-                    console.log(`Box ${box} is not visible. Counter reset.`);
-                    box.classList.remove('visible');
-                    counter.innerText = '0+'; // Reset the counter when it's out of view
+                if (counter.animationId) {
+                    cancelAnimationFrame(counter.animationId);
                 }
-            });
-        };
-
-        const observer = new IntersectionObserver(callback, options);
-
-        boxes.forEach(box => {
-            observer.observe(box);
+                counter.innerText = '0+';
+            }
         });
+    };
+
+    const observer = new IntersectionObserver(callback, options);
+
+    boxes.forEach(box => {
+        const counter = box.querySelector('.stat-number');
+        counter.setAttribute('data-target', counter.innerText.replace('+', ''));
+        observer.observe(box);
     });
-   
+
+    // Force a scroll event to trigger intersection checks
+    setTimeout(() => {
+        window.dispatchEvent(new Event('scroll'));
+    }, 100);
+});
 </script>
 
 <!-- star displying when move to bottom -->

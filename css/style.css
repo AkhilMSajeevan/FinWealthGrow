@@ -160,7 +160,7 @@ h2 {
 }
 
 .logo-image {
-  width: 250px; /* Adjust as needed */
+  width: 300px; /* Adjust as needed */
   height: auto;
   margin-right: 10px;
   margin-top: -5px; /* Move the logo up by 5px */
@@ -321,6 +321,167 @@ h2 {
   margin-bottom: 30px;
 }
 
+/* Typewriter effect for h2 */
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: orange; }
+}
+
+.typewriter {
+    overflow: hidden;
+    border-right: 0.15em solid orange; /* Blinking cursor */
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.15em;
+    animation: 
+        typewriter 4s steps(100, end) 1s 1 normal both,
+        blink-caret 0.75s step-end infinite;
+}
+
+/* Pop up effect for list items */
+@keyframes popUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pop-up-list li {
+    opacity: 0;
+    animation: popUp 1s ease-in-out forwards;
+}
+
+.pop-up-list li:nth-child(1) {
+    animation-delay: 0.5s;
+}
+
+.pop-up-list li:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.pop-up-list li:nth-child(3) {
+    animation-delay: 1.5s;
+}
+
+.pop-up-list li:nth-child(4) {
+    animation-delay: 2s;
+}
+/* Typewriter effect for h2 */
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: orange; }
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: 0.05em solid orange; /* Blinking cursor */
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.15em;
+  animation: 
+      typewriter 3s steps(40, end) 1s 1 normal both,
+      blink-caret 0.60s step-end infinite;
+  margin-top: 50px;
+  margin-bottom: 60px;
+}
+
+/* Pop up effect for list items */
+@keyframes popUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.pop-up-list li {
+  opacity: 0;
+  animation: popUp 1s ease-in-out forwards;
+}
+
+.pop-up-list li:nth-child(1) {
+  animation-delay: 0.5s;
+}
+
+.pop-up-list li:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.pop-up-list li:nth-child(3) {
+  animation-delay: 1.5s;
+}
+
+.pop-up-list li:nth-child(4) {
+  animation-delay: 2s;
+}
+
+
+/* Styles for the course overview section */
+.course-overview {
+  padding: 20px;
+  background-color: #000000;
+  border-radius: 8px;
+  margin: 20px auto;
+  width: 90%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.course-overview h2 {
+  font-size: 1.8em;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.why-choose {
+  background-color: #eaeaea;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  align-self: center;
+}
+
+.why-choose h3 {
+  font-size: 1.5em;
+  color: #007BFF;
+  margin-bottom: 10px;
+}
+
+.why-choose ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.why-choose ul li {
+  font-size: 1.1em;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.why-choose ul li strong {
+  color: #333;
+}
+
+
 .courses-section {
   display: flex;
   justify-content: center;
@@ -446,6 +607,17 @@ h2 {
   font-size: 1.8em;
   color: #00ff00;
 }
+
+.original-price {
+  font-size: 0.7em; /* Smaller font for the original price */
+  color: #e3e3e3; /* Different color for the original price */
+  text-decoration: line-through; /* Strikethrough effect */
+}
+
+.discounted-price {
+  font-size: 1.2em; /* Larger font for the discounted price */
+  color: #00ff00; /* Green color for the discounted price */
+}
 /* .rating {
     color: gold;
     font-size: 24px;
@@ -492,6 +664,37 @@ h2 {
   font-size: 24px;
   font-weight: bold;
   margin-top: 20px;
+}
+
+
+.whatsapp-link {
+  width: 80%;
+  align-self: center;
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #25D366;
+  color: #000000;
+  border-radius: 12px;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+}
+
+.whatsapp-link:hover {
+  transform: scale(1.05);
+  text-decoration: none;
+}
+
+.whatsapp-link:hover {
+  background-color: #dfdfdf;
+}
+
+
+.warning {
+  color: #fbfb2c;
+  font-weight:lighter;
+  text-align: center;
 }
 
 footer {

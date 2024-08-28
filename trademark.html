@@ -46,7 +46,7 @@
     font-weight: bold;
 }
 .grow-text {
-    color: #00ff00;
+    color: #090c29;
 }
 
 nav a {
@@ -68,7 +68,7 @@ nav a {
 }
 
 .logo-image {
-    width: 30px; /* Adjust as needed */
+    width: 300px; /* Adjust as needed */
     height: auto;
     margin-right: 10px;
     margin-top: -5px; /* Move the logo up by 5px */
@@ -212,11 +212,11 @@ nav a {
         }
 
         .why-choose-us {
-            text-align: center;
-            
+            align-self: center;
             justify-content: center;
             align-items: center;
             width: 90%;
+            margin: 20px auto;
             margin-bottom: 50px;
             padding: 30px;
             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
@@ -332,7 +332,8 @@ nav a {
             left: -2px;
             right: -2px;
             bottom: -2px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            /* background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); */
+            background: linear-gradient(10deg, #ffffff, #dedede);
             z-index: -1;
             filter: blur(10px);
             opacity: 0;
@@ -377,29 +378,6 @@ nav a {
         .service:hover .service-details {
             display: block;
             opacity: 1;
-        }
-
-
-        .cta {
-            text-align: center;
-            padding: 100px 0;
-            background: linear-gradient(45deg, #000000, #1a1a1a);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
-            filter: blur(40px);
-            z-index: 0;
         }
 
         .btn {
@@ -567,13 +545,13 @@ footer::before {
     <header>
         <div class="header-container">
             <div class="logo-container">
-                <img src="images/edited-fin-wealth.png" alt="FinWealth Grow Logo" class="logo-image">
-                <div class="logo-text">FIN WEALTH <span class="grow-text">GROW</span></div>
+                <img src="images/FWG.jpg" alt="FinWealth Grow Logo" class="logo-image">
+                <div class="logo-text"> <span class="grow-text"> .</span></div>
             </div>
             <nav class="right-section">
                 <a href="home.html">Home</a>
                 <a href="about.html">About us</a>
-                <a href="#">Courses</a>
+                <a href="courses.html">Courses</a>
                 <a href="tax.html">Tax</a>
                 <a href="trademark.html">Trade Mark</a>
                 <a href="https://wa.me/919074001420" target="_blank" class="btn">Join Us</a>
@@ -601,82 +579,79 @@ footer::before {
                 <div class="service-icon">💎</div>
             <h3>Trademark Registration and Protection</h3>
             <p>Elevate your brand with our cutting-edge trademark strategies and global protection services.</p>
-            <div class="service-details">
+            <li><strong>Trademark Search and Registration:</strong> Ensure your brand stands out with thorough searches and efficient registration processes.</li>
+            <li><strong>Trademark Monitoring:</strong> Proactively safeguard your brand against unauthorized use with continuous monitoring and enforcement strategies.</li>
+            <li><strong>Trademark Renewals and Portfolio Management:</strong> Stay compliant and expand your brand's protection globally with our expert management services.</li>
+            <!-- <div class="service-details">
                 <ul>
                     <li><strong>Trademark Search and Registration:</strong> Ensure your brand stands out with thorough searches and efficient registration processes.</li>
                     <li><strong>Trademark Monitoring:</strong> Proactively safeguard your brand against unauthorized use with continuous monitoring and enforcement strategies.</li>
                     <li><strong>Trademark Renewals and Portfolio Management:</strong> Stay compliant and expand your brand's protection globally with our expert management services.</li>
                 </ul>
-            </div>
+            </div> -->
         </div>
         <div class="service" data-aos="fade-up" data-aos-delay="100">
             <div class="service-icon">🔬</div>
-            <h3>Barcode Innovation</h3>
-            <p>Revolutionize product identification with our next-gen barcode technologies and seamless integration.</p>
-            <div class="service-details">
+            <h3>Barcode Registration</h3>
+            <p>Streamline your product identification process with compliant barcode registration services.</p>
+            <li><strong>Barcode Consultation and Registration:</strong> Streamline your product identification process with compliant barcode registration services.</li>
+            <li><strong>Barcode Verification:</strong> Ensure accuracy and compliance with industry standards to boost efficiency and consumer trust.</li>
+            <!-- <div class="service-details">
                 <h4>Barcode Registration:</h4>
                 <ul>
                     <li><strong>Barcode Consultation and Registration:</strong> Streamline your product identification process with compliant barcode registration services.</li>
                     <li><strong>Barcode Verification:</strong> Ensure accuracy and compliance with industry standards to boost efficiency and consumer trust.</li>
                 </ul>
-            </div>
+            </div> -->
         </div>
 
         <div class="service" data-aos="fade-up" data-aos-delay="200">
             <div class="service-icon">🛡️</div>
-            <h3>Copyright Fortress</h3>
-            <p>Construct an impenetrable shield around your creative assets with our comprehensive copyright solutions.</p>
-            <div class="service-details">
+            <h3>Copyright Registration</h3>
+            <p>Protect your creative works and digital content with our comprehensive registration and advisory services.</p>
+            <li><strong>Copyright Consultation and Registration:</strong> Protect your creative works and digital content with our comprehensive registration and advisory services.</li>
+            <li><strong>Copyright Enforcement:</strong> Vigilant monitoring and swift action against infringement to preserve your intellectual property rights.</li>
+            <!-- <div class="service-details">
                 <h4>Copyright Registration:</h4>
                 <ul>
                     <li><strong>Copyright Consultation and Registration:</strong> Protect your creative works and digital content with our comprehensive registration and advisory services.</li>
                     <li><strong>Copyright Enforcement:</strong> Vigilant monitoring and swift action against infringement to preserve your intellectual property rights.</li>
                 </ul>
-            </div>
+            </div> -->
         </div>
 
         <div class="service" data-aos="fade-up" data-aos-delay="300">
             <div class="service-icon">🏆</div>
-            <h3>ISO Excellence</h3>
-            <p>Ascend to new heights of quality with our streamlined ISO certification processes and expert consultancy.</p>
-            <div class="service-details">
+            <h3>ISO Certification Services</h3>
+            <p>Navigate the complex landscape of ISO standards with our expert guidance tailored to your industry.</p>
+            <li><strong>ISO Consultation:</strong> Navigate the complex landscape of ISO standards with our expert guidance tailored to your industry.</li>
+            <li><strong>ISO Certification Assistance:</strong> Achieve certification efficiently with our streamlined processes and compliance strategies.</li>
+            <!-- <div class="service-details">
                 <h4>ISO Certification Services:</h4>
                 <ul>
                     <li><strong>ISO Consultation:</strong> Navigate the complex landscape of ISO standards with our expert guidance tailored to your industry.</li>
                     <li><strong>ISO Certification Assistance:</strong> Achieve certification efficiently with our streamlined processes and compliance strategies.</li>
                 </ul>
-            </div>
+            </div> -->
         </div>
 
         <div class="service" data-aos="fade-up" data-aos-delay="400">
             <div class="service-icon">🚀</div>
-            <h3>Patent Powerhouse</h3>
-            <p>Catalyze your innovations into market dominance with our avant-garde patent strategies and global filing expertise.</p>
-            <div class="service-details">
+            <h3>Patent Registration</h3>
+            <p>Secure your innovations and inventions with meticulous patent searches and efficient filing procedures.</p>
+            <li><strong>Patent Search and Filing:</strong> Secure your innovations and inventions with meticulous patent searches and efficient filing procedures.</li>
+            <li><strong>Patent Enforcement:</strong> Robust protection strategies and legal representation to defend your patents against infringement.</li>
+            <!-- <div class="service-details">
                 <h4>Patent Registration:</h4>
                 <ul>
                     <li><strong>Patent Search and Filing:</strong> Secure your innovations and inventions with meticulous patent searches and efficient filing procedures.</li>
                     <li><strong>Patent Enforcement:</strong> Robust protection strategies and legal representation to defend your patents against infringement.</li>
                 </ul>
-            </div>
+            </div> -->
         </div>
         </div>
     </section>
-
-    <!-- <section class="cta">
-        <div class="container">
-            <h2 class="gradient-text">Ignite Your Intellectual Property Strategy</h2>
-            <p>Join the vanguard of industry leaders who trust FinWealth Grow for unparalleled IP solutions</p>
-            <a href="#" class="btn">Unleash Your Potential</a>
-        </div>
-    </section> -->
-
-    <!-- <footer>
-        <div class="container">
-            <p>&copy; 2024 FinWealth Grow Trade Mark Solutions. Pioneering the Future of Intellectual Property.</p>
-        </div>
-    </footer> -->
-
+   
     <footer>
         <div class="whatsApp-footer">
             <a href="https://wa.me/919074001420" target="_blank">
@@ -764,20 +739,5 @@ footer::before {
         });
     </script>
 
-<script>
-    const text = "Empower Your Business with Comprehensive IP Services";
-    const typewriterElement = document.getElementById('typewriter-text');
-    let i = 0;
-
-    function typeWriter() {
-        if (i < text.length) {
-            typewriterElement.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 50);
-        }
-    }
-
-    typeWriter();
-</script>
 </body>
 </html>

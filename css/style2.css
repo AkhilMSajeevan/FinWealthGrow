@@ -366,6 +366,32 @@ footer::before {
 
 section {
     animation: fadeIn 0.5s ease-in-out;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.why-choose-us {
+    font-size: 2.0em;
+}
+
+h2 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.5rem;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    background-color: #ecf0f1;
 }
 
 .btn {
@@ -419,6 +445,9 @@ section {
     background-attachment: fixed;
     color: #ffffff;
     transform: none; /* Ensure no transform is applied to the container */
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-radius: 1%;
 }
 
 .service-container {

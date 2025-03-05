@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fin Wealth Grow</title>
     <link rel="icon" href="./images/edited-fin-wealth.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="header-container">
             <div class="logo-container">
-                <img src="images/FWG.jpg" alt="FinWealth Grow Logo" class="logo-image">
-                <!-- <div class="logo-text">FIN WEALTH <span class="grow-text">GROW</span></div> -->
+                <img src="images/FWG_with-TM.jpg" alt="FinWealth Grow Logo" class="logo-image">
             </div>
             <nav class="right-section">
                 <a href="#">Home</a>
@@ -23,13 +23,49 @@
                 <a href="https://wa.me/919074001420" target="_blank" class="btn">Join Us</a>
             </nav>
         </div>
+        <div class="toogle_btn">
+            <i class="fa fa-align-justify" title="Align Justify"></i>
+        </div>
+        <div class="dropdown_menu">
+            <nav>
+                <a href="#">Home</a>
+                <a href="about.html">About us</a>
+                <a href="courses.html">Courses</a>
+                <a href="tax.html">Tax</a>
+                <a href="trademark.html">Trade Mark</a>
+                <a href="https://wa.me/919074001420" target="_blank" class="btn">Join Us</a>
+            </nav>
+        </div>
     </header>
-    <main>
+
+    <script>
+        document.querySelector('.toogle_btn').addEventListener('click', function() {
+            document.querySelector('.dropdown_menu').classList.toggle('active');
+        });
+
+        document.addEventListener('click', function(event) {
+            const dropdownMenu = document.querySelector('.dropdown_menu');
+            const toggleButton = document.querySelector('.toogle_btn');
+            if (!dropdownMenu.contains(event.target) && !toggleButton.contains(event.target)) {
+                dropdownMenu.classList.remove('active');
+            }
+        });
+    </script>
+    <!-- <main>
 
         <h2>WELCOME TO,</h2>
         <h1>FIN WEALTH <span class="highlight">GROW</span></h1>
         <p class="tagline">UNLOCK YOUR FINANCIAL FREEDOM!</p>
-    </main>
+    </main> -->
+    <div class="main">
+        <div class="overlay"></div>
+        <div class="glare"></div>
+        <div class="content">
+            <h2>WELCOME TO</h2>
+            <h1>FIN WEALTH <span class="highlight">GROW</span></h1>
+            <p class="tagline">UNLOCK YOUR FINANCIAL FREEDOM!</p>
+        </div>
+    </div>
 
     <div class="text">
         <span class="large">COURSES</span> <span class="medium">WE OFFER</span>
@@ -59,12 +95,6 @@
           <a href="https://wa.me/919074001420" class="whatsapp-link">Contact us on WhatsApp</a><br>
           <div class="warning">nb:Verify course content quality</div>
            <div class="rating">
-            <!-- <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
-            &#9733; is a filled star, &#9734; is an empty star  -->
           </div>
         </div>
         <div class="course-box">
@@ -85,12 +115,6 @@
           <a href="https://wa.me/919074001420" class="whatsapp-link">Contact us on WhatsApp</a><br>
           <div class="warning">nb:Verify course content quality</div>
           <div class="rating">
-          <!-- <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
-            <span class="star">&#9734;</span>
-            &#9733; is a filled star, &#9734; is an empty star -->
         </div>
         </div>
         <div class="course-box">
@@ -114,12 +138,6 @@
           <a href="https://wa.me/919074001420" class="whatsapp-link">Contact us on WhatsApp</a><br>
           <div class="warning">nb:Verify course content quality</div>
           <div class="rating">
-            <!-- <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            &#9733; is a filled star, &#9734; is an empty star  -->
            </div> 
         </div>
       </div>
@@ -275,25 +293,6 @@
     }, 100);
 });
 </script>
-
-<!-- star displying when move to bottom -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const stars = entry.target.querySelectorAll('.star');
-            stars.forEach(star => star.classList.add('visible'));
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.9 });
-    
-      document.querySelectorAll('.course-box').forEach(box => {
-        observer.observe(box);
-      });
-    });
-    </script>
     
 <!-- Cources we offer -->
 <script>

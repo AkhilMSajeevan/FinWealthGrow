@@ -1,343 +1,1477 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fin Wealth Grow</title>
-    <link rel="icon" href="./images/edited-fin-wealth.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="css/style.css" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-green: #00ff0081;
+            --dark-green: rgba(0, 204, 0, 0.7);
+            --primary-gray: #333333;
+            --light-gray: #777777;
+            --dark-gray: #222222;
+            --white: #ffffff;
+            --off-white: #f8f8f8;
+            --border-radius: 8px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        @media (min-width: 1200px) {
+            html {
+                font-size: 18px;
+            }
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--primary-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--primary-gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2 span {
+            color: var(--primary-green);
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-green);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            height: 120px;
+            overflow: visible;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 20px;
+            margin: 0 auto;
+            height: 100%;
+            max-width: 1300px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .logo-image {
+            height: 200px;
+            width: auto;
+            padding: 0;
+            position: relative;
+            top: 10px;
+        }
+
+        .right-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .right-section a {
+            color: var(--primary-gray);
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .right-section a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary-green);
+            transition: width 0.3s ease;
+        }
+
+        .right-section a:hover::after {
+            width: 100%;
+        }
+
+        .right-section .btn {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0, 255, 0, 0.2);
+        }
+
+        .right-section .btn:hover {
+            background-color: var(--dark-green);
+        }
+
+        .toggle-btn {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--primary-gray);
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 120px;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            flex-direction: column;
+            gap: 20px;
+            z-index: 999;
+        }
+
+        .dropdown-menu.active {
+            display: flex;
+        }
+
+        .dropdown-menu a {
+            font-size: 1.2rem;
+            padding: 10px 0;
+        }
+
+        .dropdown-menu a:hover {
+            color: var(--primary-green);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 120px;
+            position: relative;
+            min-height: 600px;
+        }
+
+        .hero-content {
+            z-index: 2;
+            padding: 0 30px;
+            text-align: center;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            line-height: 1.2;
+            padding: 0 20px;
+            word-wrap: break-word;
+        }
+
+        .hero h1 .highlight {
+            color: var(--primary-green);
+            text-shadow: 0 0 8px rgba(0, 255, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            line-height: 1.4;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 18px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.3rem;
+            border: 2px solid var(--primary-green);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
+        }
+
+        .hero-btn:hover {
+            background-color: transparent;
+            color: var(--white);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gray);
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--white);
+            position: relative;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+        }
+
+        .about-text {
+            padding: 30px;
+            border-radius: var(--border-radius);
+            background-color: var(--off-white);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .about-text h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-green);
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            color: var(--primary-gray);
+            line-height: 1.8;
+        }
+
+        /* Courses Section */
+        .courses {
+            background-color: var(--off-white);
+            position: relative;
+        }
+
+        .text-highlight {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .text-highlight .large {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: var(--primary-gray);
+            display: block;
+            letter-spacing: 3px;
+        }
+
+        .text-highlight .medium {
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: var(--primary-green);
+            letter-spacing: 2px;
+        }
+
+        .course-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .course-box {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .course-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .course-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--primary-green);
+        }
+
+        .course-box h3 {
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            margin-bottom: 30px;
+            text-align: center;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .course-details {
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .course-details li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 30px;
+            color: var(--primary-gray);
+            font-size: 1.15rem;
+        }
+
+        .course-details li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .price {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .discounted-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-right: 15px;
+        }
+
+        .original-price {
+            font-size: 1.4rem;
+            color: var(--light-gray);
+            text-decoration: line-through;
+        }
+
+        .whatsapp-link {
+            display: block;
+            background-color: var(--primary-green);
+            color: var(--white);
+            text-align: center;
+            padding: 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-top: 25px;
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.2);
+        }
+
+        .whatsapp-link:hover {
+            background-color: var(--dark-green);
+        }
+
+        .warning {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--light-gray);
+            margin-top: 15px;
+        }
+
+        /* Full Width Course */
+        .full-width-course {
+            margin-top: 60px;
+            width: 100%;
+        }
+
+        .full-width-course-box {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+        }
+
+        .full-width-course-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .full-width-course-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--primary-green);
+        }
+
+        .course-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-info h3 {
+            font-size: 2.2rem;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .course-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .course-features li {
+            position: relative;
+            padding-left: 30px;
+            color: var(--primary-gray);
+            font-size: 1.15rem;
+        }
+
+        .course-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .course-action {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            min-width: 250px;
+        }
+
+        .course-action .price {
+            margin-bottom: 0;
+        }
+
+        .course-action .whatsapp-link {
+            margin-top: 0;
+            width: 100%;
+        }
+
+        /* Stats Section */
+        .stats {
+            background-color: var(--primary-gray);
+            color: var(--white);
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .stats-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .quote {
+            flex: 1;
+            min-width: 350px;
+        }
+
+        .quote h2 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .quote h2 span {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .quote h2 .green {
+            color: var(--primary-green);
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+        }
+
+        .stats-container {
+            flex: 2;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+        }
+
+        .stat-label h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .social-icons {
+            position: fixed;
+            bottom: 150px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--white);
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .social-icons img {
+            width: 25px;
+            height: 25px;
+            transition: filter 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding-top: 70px;
+            position: relative;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .address,
+        .quick-links {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 40px;
+        }
+
+        .address h4,
+        .quick-links h4 {
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            color: var(--primary-green);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .address h4::after,
+        .quick-links h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-green);
+        }
+
+        .address p {
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .quick-links a {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .quick-links a::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+        }
+
+        .quick-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .footer-bottom {
+            background-color: rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 40px;
+        }
+
+        .footer-bottom p {
+            font-size: 1.1rem;
+        }
+
+        .faq-section {
+            font-family: Arial, sans-serif;
+            max-width: 90%;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .faq-item {
+            background-color: #f4f4f4;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            padding: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #008000;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease, padding 0.2s ease;
+            color: #333;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 20px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.6rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+
+            .quote h2 {
+                font-size: 3rem;
+            }
+
+            .text-highlight .large {
+                font-size: 2.8rem;
+            }
+
+            .text-highlight .medium {
+                font-size: 1.8rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 992px) {
+            section {
+                padding: 70px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: 3px;
+            }
+
+            .hero p {
+                font-size: 1.4rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .about-text h3 {
+                font-size: 1.8rem;
+            }
+
+            .about-text p {
+                font-size: 1.1rem;
+            }
+
+            .quote h2 {
+                font-size: 2.5rem;
+            }
+
+            .text-highlight .large {
+                font-size: 2.5rem;
+            }
+
+            .text-highlight .medium {
+                font-size: 1.6rem;
+            }
+
+            .course-box h3 {
+                font-size: 1.6rem;
+            }
+
+            .full-width-course-box {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .course-action {
+                min-width: auto;
+                width: 100%;
+            }
+        }
+
+        /* Critical 750px-800px range fixes */
+        @media (max-width: 850px) and (min-width: 750px) {
+            .header-container {
+                padding: 0 15px;
+            }
+
+            .logo-image {
+                height: 180px;
+            }
+
+            .hero {
+                min-height: 500px;
+                padding: 0 15px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+                letter-spacing: 2px;
+                line-height: 1.3;
+                white-space: normal;
+                word-break: break-word;
+            }
+
+            .hero p {
+                font-size: 1.3rem;
+                margin: 30px 0;
+            }
+
+            .hero-btn {
+                font-size: 1.1rem;
+                padding: 15px 30px;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .course-container {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 30px;
+            }
+
+            .full-width-course-box {
+                flex-direction: column;
+                gap: 30px;
+                padding: 30px;
+            }
+
+            .course-info h3 {
+                font-size: 1.9rem;
+                text-align: center;
+            }
+
+            .course-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                justify-content: space-between;
+                padding: 0 15px;
+            }
+
+            .logo-container {
+                flex: 1;
+                max-width: 70%;
+            }
+
+            .logo-image {
+                height: 160px;
+                position: relative;
+                left: -10px;
+            }
+
+            .right-section {
+                display: none;
+            }
+
+            .toggle-btn {
+                display: block;
+                flex-shrink: 0;
+            }
+
+            .hero {
+                min-height: 500px;
+                padding: 0 15px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                letter-spacing: 1px;
+                line-height: 1.3;
+                white-space: normal;
+                word-break: break-word;
+                padding: 0 10px;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+                margin: 25px 0;
+            }
+
+            .hero-btn {
+                font-size: 1rem;
+                padding: 12px 25px;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .about-text {
+                padding: 25px;
+            }
+
+            .about-text h3 {
+                font-size: 1.6rem;
+            }
+
+            .about-text p {
+                font-size: 1rem;
+            }
+
+            .text-highlight .large {
+                font-size: 2rem;
+            }
+
+            .text-highlight .medium {
+                font-size: 1.3rem;
+            }
+
+            .quote h2 {
+                font-size: 2rem;
+                margin-bottom: 40px;
+            }
+
+            .stats-wrapper {
+                flex-direction: column;
+            }
+
+            .course-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .course-box {
+                padding: 30px;
+            }
+
+            .course-features {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width-course-box {
+                padding: 25px;
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            .course-info h3 {
+                font-size: 1.7rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            section {
+                padding: 50px 0;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .header-container {
+                padding: 0 10px;
+            }
+
+            .logo-image {
+                height: 140px;
+                left: -15px;
+            }
+
+            .hero {
+                min-height: 450px;
+                padding: 0 10px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+                letter-spacing: 1px;
+                line-height: 1.2;
+                padding: 0 5px;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+                margin: 20px 0;
+            }
+
+            .hero-btn {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+            }
+
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+
+            .about-text {
+                padding: 20px;
+            }
+
+            .about-text h3 {
+                font-size: 1.4rem;
+            }
+
+            .about-text p {
+                font-size: 0.95rem;
+            }
+
+            .text-highlight .large {
+                font-size: 1.8rem;
+            }
+
+            .text-highlight .medium {
+                font-size: 1.2rem;
+            }
+
+            .quote h2 {
+                font-size: 1.8rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .stat-label h3 {
+                font-size: 1.3rem;
+            }
+
+            .course-box {
+                padding: 20px;
+            }
+
+            .course-box h3 {
+                font-size: 1.3rem;
+                min-height: 60px;
+            }
+
+            .course-details li {
+                font-size: 1rem;
+            }
+
+            .social-icons {
+                bottom: 100px;
+                right: 10px;
+                gap: 10px;
+            }
+
+            .social-icons a {
+                width: 40px;
+                height: 40px;
+            }
+
+            .social-icons img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .full-width-course-box {
+                padding: 20px;
+            }
+
+            .course-info h3 {
+                font-size: 1.5rem;
+            }
+
+            .course-features li {
+                font-size: 0.95rem;
+            }
+
+            .faq-section {
+                padding: 0 10px;
+            }
+
+            .faq-question {
+                font-size: 1.1rem;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.6rem;
+                letter-spacing: 0.5px;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-btn {
+                font-size: 0.85rem;
+                padding: 8px 18px;
+            }
+
+            .logo-image {
+                height: 120px;
+                left: -20px;
+            }
+
+            .section-title h2 {
+                font-size: 1.4rem;
+            }
+
+            .course-box h3 {
+                font-size: 1.2rem;
+            }
+
+            .course-info h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <header>
         <div class="header-container">
             <div class="logo-container">
-                <img src="images/FWG_with-TM.jpg" alt="FinWealth Grow Logo" class="logo-image">
+                <img src="./images/fin-wealth-grow.png" alt="FinWealth Grow Logo" class="logo-image">
             </div>
             <nav class="right-section">
-                <a href="#">Home</a>
-                <a href="about.html">About us</a>
-                <a href="courses.html">Courses</a>
-                <a href="tax.html">Tax</a>
-                <a href="trademark.html">Trade Mark</a>
+                <a href="#home">Home</a>
+                <a href="#about">About us</a>
+                <a href="#courses">Courses</a>
                 <a href="https://wa.me/919074001420" target="_blank" class="btn">Join Us</a>
             </nav>
+            <div class="toggle-btn">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
-        <div class="toogle_btn">
-            <i class="fa fa-align-justify" title="Align Justify"></i>
-        </div>
-        <div class="dropdown_menu">
-            <nav>
-                <a href="#">Home</a>
-                <a href="about.html">About us</a>
-                <a href="courses.html">Courses</a>
-                <a href="tax.html">Tax</a>
-                <a href="trademark.html">Trade Mark</a>
-                <a href="https://wa.me/919074001420" target="_blank" class="btn">Join Us</a>
-            </nav>
+        <div class="dropdown-menu">
+            <a href="#home">Home</a>
+            <a href="#about">About us</a>
+            <a href="#courses">Courses</a>
+            <a href="https://wa.me/919074001420" target="_blank" class="btn">Join Us</a>
         </div>
     </header>
 
-    <script>
-        document.querySelector('.toogle_btn').addEventListener('click', function() {
-            document.querySelector('.dropdown_menu').classList.toggle('active');
-        });
-
-        document.addEventListener('click', function(event) {
-            const dropdownMenu = document.querySelector('.dropdown_menu');
-            const toggleButton = document.querySelector('.toogle_btn');
-            if (!dropdownMenu.contains(event.target) && !toggleButton.contains(event.target)) {
-                dropdownMenu.classList.remove('active');
-            }
-        });
-    </script>
-    <!-- <main>
-
-        <h2>WELCOME TO,</h2>
-        <h1>FIN WEALTH <span class="highlight">GROW</span></h1>
-        <p class="tagline">UNLOCK YOUR FINANCIAL FREEDOM!</p>
-    </main> -->
-    <div class="main">
+    <section id="home" class="hero">
         <div class="overlay"></div>
-        <div class="glare"></div>
-        <div class="content">
-            <h2>WELCOME TO</h2>
-            <h1>FIN WEALTH <span class="highlight">GROW</span></h1>
-            <p class="tagline">UNLOCK YOUR FINANCIAL FREEDOM!</p>
+        <div class="hero-content">
+            <h1>GROW YOUR WEALTH WITH FIN WEALTH <span class="highlight">GROW</span></h1>
+            <p>Your Trusted Mentor in the Stock Market Education</p>
+            <a href="#courses" class="hero-btn">Explore Our Courses</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About <span>Us</span></h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Vision and Goal</h3>
+                    <p>FinWealth Grow Pvt. Ltd., founded in 2020, aims to promote financial literacy and independence
+                        through the stock market. We focus mainly on Stock Market Education in Equity options ,
+                        Investment , Crypto , Forex.</p>
+                </div>
+                <div class="about-text">
+                    <h3>Stock Market Training</h3>
+                    <p>As part of our Stock Market Training Program, we offer online classes, webinars, workshops, and
+                        recorded classes to help you master the art of trading and investing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="courses" class="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our <span>Courses</span></h2>
+            </div>
+            <div class="course-container">
+                <div class="course-box">
+                    <h3 class="A-Z">STOCK MARKET <br> A—Z</h3>
+                    <ul class="course-details">
+                        <li>Online classes</li>
+                        <li>Recorded & Live classes</li>
+                        <li>24*7 doubt clearing (3 month validity)</li>
+                        <li>Basic lessons (30 chapters)</li>
+                        <li>How to invest stock market</li>
+                        <li>What is stock market</li>
+                        <li>5+ strategy in equity intraday</li>
+                        <li>Trading Psychology</li>
+                        <li>Price Action strategy</li>
+                        <li>Training with examples</li>
+                        <li>Candlestick Pattern</li>
+                        <li>Support & Resistance</li>
+                    </ul>
+                    <div class="price">
+                        <span class="discounted-price">Rs: 1499/-</span>
+                        <span class="original-price">Rs: 2999/-</span>
+                    </div>
+                    <a href="https://wa.me/919074001420" class="whatsapp-link">Contact us on WhatsApp</a>
+                    <div class="warning">nb: Verify course content quality</div>
+                </div>
+                <div class="course-box">
+                    <h3>SWING TRADE STRATEGY/ MONTHLY INCOME STRATEGY</h3>
+                    <ul class="course-details">
+                        <li>Online classes</li>
+                        <li>Recorded & Live classes</li>
+                        <li>24*7 doubt clearing (1 month validity)</li>
+                        <li>Price action Strategy</li>
+                        <li>Fundamental Analysis</li>
+                        <li>Technical Analysis</li>
+                        <li>How to select a stock for Swing Trade</li>
+                    </ul>
+                    <div class="price">
+                        <span class="discounted-price">Rs: 599/-</span>
+                        <span class="original-price">Rs: 1799/-</span>
+                    </div>
+                    <a href="https://wa.me/919074001420" class="whatsapp-link">Contact us on WhatsApp</a>
+                    <div class="warning">nb: Verify course content quality</div>
+                </div>
+                <div class="course-box">
+                    <h3>OPTION BUYING ADVANCED STRATEGY</h3>
+                    <ul class="course-details">
+                        <li>Online Classes</li>
+                        <li>Recorded & Live classes</li>
+                        <li>24*7 Doubt clearing (3 month validity)</li>
+                        <li>6+ OPTION BUYING STRATEGY</li>
+                        <li>Strike price Selection</li>
+                        <li>BTST STRATEGY</li>
+                        <li>PRICE ACTION Strategy</li>
+                        <li>BAHUBALI ZONE STRATEGY</li>
+                        <li>Scalping Setup</li>
+                        <li>Trading Psychology</li>
+                    </ul>
+                    <div class="price">
+                        <span class="discounted-price">Rs: 1599/-</span>
+                        <span class="original-price">Rs: 5999/-</span>
+                    </div>
+                    <a href="https://wa.me/919074001420" class="whatsapp-link">Contact us on WhatsApp</a>
+                    <div class="warning">nb: Verify course content quality</div>
+                </div>
+            </div>
+
+            <!-- Full Width Crypto Course -->
+            <div class="full-width-course">
+                <div class="full-width-course-box">
+                    <div class="course-info">
+                        <h3>CRYPTO TRADING A-Z</h3>
+                        <ul class="course-features">
+                            <li>Language : Malayalam</li>
+                            <li>Community Access</li>
+                            <li>Bitcoin Vs Alt coins</li>
+                            <li>24*7 doubt Clearing</li>
+                            <li>Investment & Trading in crypto</li>
+                            <li>Account Opening</li>
+                            <li>Strategy in Crypto Trading</li>
+                        </ul>
+                    </div>
+                    <div class="course-action">
+                        <div class="price">
+                            <span class="discounted-price">Rs: 999/-</span>
+                            <span class="original-price">Rs: 1599/-</span>
+                        </div>
+                        <a href="https://wa.me/919074001420" class="whatsapp-link">Contact us on WhatsApp</a>
+                        <div class="warning">nb: Verify course content quality</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats" class="stats">
+        <div class="container">
+            <div class="stats-wrapper">
+                <div class="quote">
+                    <h2>
+                        <span>passion</span>
+                        <span class="green">patience</span>
+                        <span>persistence</span>
+                        <span class="green">profit</span>
+                    </h2>
+                </div>
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">
+                            <h3>Students</h3>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">7+</div>
+                        <div class="stat-label">
+                            <h3>Years Experience</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="faq-section">
+        <div class="faq-item">
+            <button class="faq-question">How do I enroll in a course?</button>
+            <div class="faq-answer">
+                You can enroll by contacting us via the whatsapp or clicking 'Enroll Now' on the course
+                details page.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Are the courses online or in-person?</button>
+            <div class="faq-answer">
+                All our courses are available online and recorded, with flexible schedules to suit your needs.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">What support is provided during the courses?</button>
+            <div class="faq-answer">
+                You'll receive ongoing support from our expert instructors through whatsapp, live Q&amp;A sessions, and
+                message assistance.
+            </div>
         </div>
     </div>
 
-    <div class="text">
-        <span class="large">COURSES</span> <span class="medium">WE OFFER</span>
-    </div>
-
-    <div class="course-container">
-        <div class="course-box">
-          <h3>STOCK MARKET A—Z</h3>
-          <ul class="course-details">
-            <li>Online classes</li>
-            <li>Recorded & Live classes</li>
-            <li>24*7 doubt clearing (3 month validity)</li>
-            <li>Basic lessons (30 chapters)</li>
-            <li>How to invest stock market</li>
-            <li>What is stock market</li>
-            <li>5+ strategy in equity intraday</li>
-            <li>Trading Psychology</li>
-            <li>Price Action strategy</li>
-            <li>Training with examples</li>
-            <li>Candlestick Pattern</li>
-            <li>Support & Resistance</li>
-          </ul>
-          <div class="price">
-            <span class="discounted-price">Rs: 999/-</span>
-            <span class="original-price">Rs: 1999/-</span>
-        </div>
-          <a href="https://wa.me/919074001420" class="whatsapp-link">Contact us on WhatsApp</a><br>
-          <div class="warning">nb:Verify course content quality</div>
-           <div class="rating">
-          </div>
-        </div>
-        <div class="course-box">
-          <h3>SWING TRADE STRATEGY/ MONTHLY INCOME STRATEGY</h3>
-          <ul class="course-details">
-            <li>Online classes</li>
-            <li>Recorded & Live classes</li>
-            <li>24*7 doubt clearing (1 month validity)</li>
-            <li>Price action Strategy</li>
-            <li>Fundamental Analysis</li>
-            <li>Technical Analysis</li>
-            <li>How to select a stock for Swing Trade</li>
-          </ul>
-          <div class="price">
-            <span class="discounted-price">Rs: 599/-</span>
-            <span class="original-price">Rs: 799/-</span>
-        </div>
-          <a href="https://wa.me/919074001420" class="whatsapp-link">Contact us on WhatsApp</a><br>
-          <div class="warning">nb:Verify course content quality</div>
-          <div class="rating">
-        </div>
-        </div>
-        <div class="course-box">
-          <h3>OPTION BUYING ADVANCED STRATEGY</h3>
-          <ul class="course-details">
-            <li>Online Classes</li>
-            <li>Recorded & Live classes</li>
-            <li>24*7 Doubt clearing (3 month validity)</li>
-            <li>6+ OPTION BUYING STRATEGY</li>
-            <li>Strike price Selection</li>
-            <li>BTST STRATEGY</li>
-            <li>PRICE ACTION Strategy</li>
-            <li>BAHUBALI ZONE STRATEGY</li>
-            <li>Scalping Setup</li>
-            <li>Trading Psychology</li>
-          </ul>
-          <div class="price">
-            <span class="discounted-price">Rs: 1499/-</span>
-            <span class="original-price">Rs: 1899/-</span>
-        </div>
-          <a href="https://wa.me/919074001420" class="whatsapp-link">Contact us on WhatsApp</a><br>
-          <div class="warning">nb:Verify course content quality</div>
-          <div class="rating">
-           </div> 
-        </div>
-      </div>
-    
-        
-      
     <div class="social-icons">
         <a href="https://wa.me/919074001420" target="_blank">
-            <img src="images/whatsapp.png" alt="WhatsApp">
-         </a>
-        <a href="https://www.instagram.com/finwealth_grow/?igsh=MXVqcHExbzM1bnp3aA%3D%3D&utm_source=qr" target="_blank">
-            <img src="images/instagram.png" alt="Instagram">
+            <img src="./images/whatsapp.png" alt="WhatsApp">
         </a>
-        <a href="https://www.facebook.com/profile.php?id=61561325323131"  target="_blank">
-            <img src="images/facebook (1).png" alt="Facebook">
+        <a href="https://www.instagram.com/finwealth_grow/" target="_blank">
+            <img src="./images/instagram.png" alt="Instagram">
         </a>
-        <a href="https://youtube.com/@strategymastery-me9wl?si=11tJIy2An1RimnJq"  target="_blank">
-            <img src="images/youtube.png" alt="YouTube">
+        <a href="https://www.facebook.com/profile.php?id=61561325323131" target="_blank">
+            <img src="./images/facebook.png" alt="Facebook">
         </a>
-        <!-- <img src="images/facebook (1).png" alt="Facebook"> -->
-         <a href="https://x.com/tradeadvthomas" target="_blank">
-            <img src="images/twitter.png" alt="X">
-         </a>
+        <a href="https://youtube.com/@strategymastery-me9wl" target="_blank">
+            <img src="./images/youtube.png" alt="YouTube">
+        </a>
     </div>
-    <div class="wrapper">
-        <div class="quote">
-            <h2><span>passion</span><br> <span class="green">patience</span><br><span>persistence</span><br><span class="green">profit</span></h2>
-        </div>
-        <div class="container">
-            <div class="stat-box">
-                <div id="students" class="stat-number">2500+</div>
-                <div class="stat-label"><h3>Students</h3></div>
-            </div>
-            <div class="stat-box">
-                <div id="taxClients" class="stat-number">1500+</div>
-                <div class="stat-label"><h3>Tax Clients</h3></div>
-            </div>
-            <div class="stat-box">
-                <div id="cities" class="stat-number">5+</div>
-                <div class="stat-label"><h3>Cities</h3></div>
-            </div>
-            <div class="stat-box">
-                <div id="tradeMarkReg" class="stat-number">1000+</div>
-                <div class="stat-label"><h3>Trade Mark Reg</h3></div>
-            </div>
-        </div>
-    </div>
+
     <footer>
-        <div class="whatsApp-footer">
-            <a href="https://wa.me/919074001420" target="_blank">
-                <img src="images/whatsapp.png" alt="WhatsApp">
-             </a>
-        </div>
         <div class="footer-container">
             <div class="address">
                 <h4>Contact Us</h4>
                 <p>Fin Wealth Grow</p>
-                <p>Address- Rajendran Complex , 2 nd</p>
-                <p>cross , Gowda Layout, BTM 1st</p>
-                <p>stage , MADIWALA , BANGALORE</p>
+                <p>Address- Rajendran Complex, 2nd</p>
+                <p>cross, Gowda Layout, BTM 1st</p>
+                <p>stage, MADIWALA, BANGALORE</p>
                 <p>-560029</p>
                 <p>Email: masterystrategy@gmail.com</p>
-                <!-- <p>Whatsup - 9074001420</p> -->
             </div>
             <div class="quick-links">
                 <h4>Quick Links</h4>
-                <a href="#">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="#">Courses</a>
-                <a href="#">Tax</a>
-                <a href="#">Trade Mark</a>
-                <a href="#">Join Us</a>
+                <a href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#courses">Courses</a>
+                <a href="https://wa.me/919074001420">Join Us</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Fin Wealth Grow. All Rights Reserved.</p>
+            <p>&copy; 2025 Fin Wealth Grow. All Rights Reserved.</p>
         </div>
     </footer>
-</body>
-</html>
 
+    <script>
+        // Toggle menu for mobile
+        document.querySelector('.toggle-btn').addEventListener('click', function () {
+            document.querySelector('.dropdown-menu').classList.toggle('active');
+        });
 
-<script>
-   document.addEventListener('DOMContentLoaded', () => {
-    const boxes = document.querySelectorAll('.stat-box');
-    const speed = 200; // Higher value for slower counting
-
-    const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    const countUp = (counter) => {
-        const target = +counter.getAttribute('data-target');
-        let count = 0;
-        const increment = target / speed;
-
-        const updateCount = () => {
-            count += increment;
-            if (count < target) {
-                counter.innerText = Math.ceil(count) + '+';
-                counter.animationId = requestAnimationFrame(updateCount);
-            } else {
-                counter.innerText = target + '+';
+        // Close menu when clicking outside
+        document.addEventListener('click', function (event) {
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+            const toggleButton = document.querySelector('.toggle-btn');
+            if (dropdownMenu.classList.contains('active') &&
+                !dropdownMenu.contains(event.target) &&
+                !toggleButton.contains(event.target)) {
+                dropdownMenu.classList.remove('active');
             }
-        };
+        });
 
-        updateCount();
-    };
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
 
-    const startCounter = (box) => {
-        const counter = box.querySelector('.stat-number');
-        // Cancel any ongoing animation
-        if (counter.animationId) {
-            cancelAnimationFrame(counter.animationId);
-        }
-        counter.innerText = '0+';
-        countUp(counter);
-    };
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
 
-    const callback = (entries, observer) => {
-        entries.forEach(entry => {
-            const box = entry.target;
-            if (entry.isIntersecting) {
-                console.log(`Box ${box} is now visible. Starting count up.`);
-                box.classList.add('visible');
-                startCounter(box);
-            } else {
-                console.log(`Box ${box} is not visible.`);
-                box.classList.remove('visible');
-                // Reset the counter when it's out of view
-                const counter = box.querySelector('.stat-number');
-                if (counter.animationId) {
-                    cancelAnimationFrame(counter.animationId);
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    document.querySelector('.dropdown-menu').classList.remove('active');
+
+                    // Scroll to target
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
                 }
-                counter.innerText = '0+';
-            }
+            });
         });
-    };
 
-    const observer = new IntersectionObserver(callback, options);
+        const faqItems = document.querySelectorAll('.faq-item');
 
-    boxes.forEach(box => {
-        const counter = box.querySelector('.stat-number');
-        counter.setAttribute('data-target', counter.innerText.replace('+', ''));
-        observer.observe(box);
-    });
-
-    // Force a scroll event to trigger intersection checks
-    setTimeout(() => {
-        window.dispatchEvent(new Event('scroll'));
-    }, 100);
-});
-</script>
-    
-<!-- Cources we offer -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
         });
-      }, { threshold: 0.1 });
-  
-      const text = document.querySelector('.text');
-      observer.observe(text);
-  
-      // Previous JavaScript for course box animations remains the same
-    });
-  </script>
+    </script>
+</body>
 
-
-<script>
-    function createMovers() {
-        const background = document.getElementById('movingBackground');
-        const numMovers = 20;
-
-        for (let i = 0; i < numMovers; i++) {
-            const mover = document.createElement('div');
-            mover.classList.add('mover');
-            
-            const size = Math.random() * 50 + 10; // Random size between 10px and 60px
-            mover.style.width = `${size}px`;
-            mover.style.height = `${size}px`;
-            
-            const duration = Math.random() * 15 + 5; // Random duration between 5s and 20s
-            mover.style.animationDuration = `${duration}s`;
-            
-            const startPositionX = Math.random() * 100;
-            const startPositionY = Math.random() * 100;
-            mover.style.left = `${startPositionX}vw`;
-            mover.style.top = `${startPositionY}vh`;
-            
-            background.appendChild(mover);
-        }
-    }
-
-    createMovers();
-</script>
+</html>

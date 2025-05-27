@@ -110,32 +110,39 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0px 20px;
+            padding: 0 50px 0 0;
             margin: 0 auto;
             height: 100%;
-            max-width: 1300px;
+            max-width: 1600px;
+            position: relative;
         }
 
         .logo-container {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
             display: flex;
             align-items: center;
-            position: relative;
             height: 100%;
-            overflow: visible;
+            z-index: 10;
         }
 
         .logo-image {
-            height: 200px;
+            height: 180px;
             width: auto;
             padding: 0;
+            margin: 0;
             position: relative;
-            top: 10px;
+            left: 0;
+            top: 0;
         }
 
         .right-section {
             display: flex;
             align-items: center;
             gap: 30px;
+            margin-left: auto;
         }
 
         .right-section a {
@@ -178,6 +185,8 @@
             font-size: 1.8rem;
             cursor: pointer;
             color: var(--primary-gray);
+            margin-left: auto;
+            z-index: 15;
         }
 
         .dropdown-menu {
@@ -849,7 +858,11 @@
         /* Critical 750px-800px range fixes */
         @media (max-width: 850px) and (min-width: 750px) {
             .header-container {
-                padding: 0 15px;
+                padding: 0 40px 0 0;
+            }
+
+            .logo-container {
+                left: 15px;
             }
 
             .logo-image {
@@ -906,19 +919,15 @@
 
         @media (max-width: 768px) {
             .header-container {
-                justify-content: space-between;
-                padding: 0 15px;
+                padding: 0 30px 0 0;
             }
 
             .logo-container {
-                flex: 1;
-                max-width: 70%;
+                left: 15px;
             }
 
             .logo-image {
                 height: 160px;
-                position: relative;
-                left: -10px;
             }
 
             .right-section {
@@ -927,7 +936,6 @@
 
             .toggle-btn {
                 display: block;
-                flex-shrink: 0;
             }
 
             .hero {
@@ -1027,12 +1035,15 @@
             }
 
             .header-container {
-                padding: 0 10px;
+                padding: 0 20px 0 0;
+            }
+
+            .logo-container {
+                left: 10px;
             }
 
             .logo-image {
                 height: 140px;
-                left: -15px;
             }
 
             .hero {
@@ -1159,9 +1170,12 @@
                 padding: 8px 18px;
             }
 
+            .logo-container {
+                left: 5px;
+            }
+
             .logo-image {
                 height: 120px;
-                left: -20px;
             }
 
             .section-title h2 {

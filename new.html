@@ -101,26 +101,37 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            height: 120px;
+            overflow: visible;
         }
 
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 30px;
-            max-width: 1300px;
+            padding: 0px 20px;
             margin: 0 auto;
+            height: 100%;
+            /* Make it fill header height */
         }
 
         .logo-container {
             display: flex;
             align-items: center;
+            position: relative;
+            /* For logo positioning */
+            height: 100%;
+            overflow: visible;
+            /* Allow logo to overflow */
         }
 
         .logo-image {
-            height: 180px;
+            height: 200px;
             width: auto;
             padding: 0;
+            position: relative;
+            top: 10px;
+
         }
 
         .right-section {
@@ -174,7 +185,7 @@
         .dropdown-menu {
             display: none;
             position: absolute;
-            top: 80px;
+            top: 120px;
             left: 0;
             width: 100%;
             background-color: var(--white);
@@ -200,7 +211,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/placeholder.svg?height=800&width=1600');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -209,14 +220,14 @@
             justify-content: center;
             text-align: center;
             color: var(--white);
-            margin-top: 80px;
+            margin-top: 120px;
             position: relative;
         }
 
         .hero-content {
             z-index: 2;
-            max-width: 900px;
             padding: 0 30px;
+            text-align: center;
         }
 
         .hero h1 {
@@ -224,10 +235,11 @@
             margin-bottom: 25px;
             text-transform: uppercase;
             letter-spacing: 5px;
-            white-space: normal;
+            white-space: nowrap;
             word-wrap: break-word;
             line-height: 1.2;
             padding: 0 20px;
+            display: inline-block;
         }
 
         .hero h1 .highlight {
@@ -446,6 +458,95 @@
             margin-top: 15px;
         }
 
+        /* Full Width Course */
+        .full-width-course {
+            margin-top: 60px;
+            width: 100%;
+        }
+
+        .full-width-course-box {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+        }
+
+        .full-width-course-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .full-width-course-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--primary-green);
+        }
+
+        .course-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-info h3 {
+            font-size: 2.2rem;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .course-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .course-features li {
+            position: relative;
+            padding-left: 30px;
+            color: var(--primary-gray);
+            font-size: 1.15rem;
+        }
+
+        .course-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .course-action {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            min-width: 250px;
+        }
+
+        .course-action .price {
+            margin-bottom: 0;
+        }
+
+        .course-action .whatsapp-link {
+            margin-top: 0;
+            width: 100%;
+        }
+
         /* Stats Section */
         .stats {
             background-color: var(--primary-gray);
@@ -479,7 +580,7 @@
 
         .quote h2 .green {
             color: var(--primary-green);
-            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
         }
 
         .stats-container {
@@ -501,7 +602,7 @@
             font-weight: 700;
             color: var(--primary-green);
             margin-bottom: 15px;
-            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
         }
 
         .stat-label h3 {
@@ -509,36 +610,36 @@
             font-weight: 500;
         }
 
-        /* Social Icons */
         .social-icons {
+            position: fixed;
+            bottom: 150px;
+            right: 20px;
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 70px 0;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
         }
 
         .social-icons a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background-color: var(--white);
             border-radius: 50%;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .social-icons a:hover {
-            background-color: var(--primary-green);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
         .social-icons img {
-            width: 30px;
-            height: 30px;
+            width: 25px;
+            height: 25px;
+            transition: filter 0.3s ease;
         }
 
-        .social-icons a:hover img {
-            filter: brightness(5);
+        .social-icons a:hover {
+            transform: translateY(-5px);
         }
 
         /* Footer */
@@ -547,28 +648,6 @@
             color: var(--white);
             padding-top: 70px;
             position: relative;
-        }
-
-        .whatsApp-footer {
-            position: absolute;
-            top: -30px;
-            right: 50px;
-        }
-
-        .whatsApp-footer a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            background-color: var(--primary-green);
-            border-radius: 50%;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .whatsApp-footer img {
-            width: 30px;
-            height: 30px;
         }
 
         .footer-container {
@@ -732,9 +811,40 @@
             .course-box h3 {
                 font-size: 1.6rem;
             }
+
+            .full-width-course-box {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .course-action {
+                min-width: auto;
+                width: 100%;
+            }
         }
 
         @media (max-width: 768px) {
+            .header-container {
+                justify-content: flex-start;
+                gap: 10px;
+                padding-left: 0;
+            }
+
+            .logo-container {
+                max-width: 65%;
+                margin-right: auto;
+                padding-left: 0;
+                overflow: visible;
+            }
+
+            .logo-image {
+                height: 160px;
+                /* Slightly smaller on mobile */
+                position: relative;
+                left: -20px;
+                /* Shift slightly to the left */
+            }
+
             .right-section {
                 display: none;
             }
@@ -744,7 +854,10 @@
             }
 
             .hero h1 {
-                font-size: 3rem;
+                font-size: 2.1rem;
+                white-space: normal;
+                /* Allow wrapping on mobile */
+                word-wrap: break-word;
             }
 
             .hero p {
@@ -788,19 +901,20 @@
             .course-container {
                 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             }
-        }
 
-        /* @media (max-width: 768px) {
-        .hero h1 {
-                font-size: 2.5rem;
+            .course-features {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width-course-box {
+                padding: 30px;
+            }
+
+            .course-info h3 {
+                font-size: 1.8rem;
+                text-align: center;
             }
         }
-
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-        } */
 
         @media (max-width: 576px) {
             section {
@@ -865,24 +979,89 @@
                 min-height: 70px;
             }
 
-            .course-box h3 {
-                font-size: 1.4rem;
-                min-height: 70px;
-            }
-
             .course-details li {
                 font-size: 1rem;
             }
 
             .social-icons a {
-                width: 50px;
-                height: 50px;
+                width: 40px;
+                height: 40px;
             }
 
             .social-icons img {
-                width: 25px;
-                height: 25px;
+                width: 20px;
+                height: 20px;
             }
+
+            .social-icons {
+                bottom: 120px;
+                right: 15px; 
+                gap: 10px;
+            }
+
+            .full-width-course-box {
+                padding: 25px;
+            }
+
+            .course-info h3 {
+                font-size: 1.6rem;
+            }
+
+            .course-features li {
+                font-size: 1rem;
+            }
+
+            .logo-image {
+                height: 140px;
+                left: -25px;
+                /* Push even further left on small screens */
+            }
+
+            .header-container {
+                padding-right: 15px;
+                /* Ensure toggle button isn't pushed off-screen */
+            }
+        }
+
+        .faq-section {
+            font-family: Arial, sans-serif;
+            max-width: 90%;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .faq-item {
+            background-color: #f4f4f4;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            padding: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #008000;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease, padding 0.2s ease;
+            color: #333;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 20px;
         }
     </style>
 </head>
@@ -968,7 +1147,7 @@
                         <li>Support & Resistance</li>
                     </ul>
                     <div class="price">
-                        <span class="discounted-price">Rs: 1599/-</span>
+                        <span class="discounted-price">Rs: 1499/-</span>
                         <span class="original-price">Rs: 2999/-</span>
                     </div>
                     <a href="https://wa.me/919074001420" class="whatsapp-link">Contact us on WhatsApp</a>
@@ -987,7 +1166,7 @@
 
                     </ul>
                     <div class="price">
-                        <span class="discounted-price">Rs: 799/-</span>
+                        <span class="discounted-price">Rs: 599/-</span>
                         <span class="original-price">Rs: 1799/-</span>
                     </div>
                     <a href="https://wa.me/919074001420" class="whatsapp-link">Contact us on WhatsApp</a>
@@ -1008,11 +1187,37 @@
                         <li>Trading Psychology</li>
                     </ul>
                     <div class="price">
-                        <span class="discounted-price">Rs: 2499/-</span>
+                        <span class="discounted-price">Rs: 1599/-</span>
                         <span class="original-price">Rs: 5999/-</span>
                     </div>
                     <a href="https://wa.me/919074001420" class="whatsapp-link">Contact us on WhatsApp</a>
                     <div class="warning">nb: Verify course content quality</div>
+                </div>
+            </div>
+
+            <!-- Full Width Crypto Course -->
+            <div class="full-width-course">
+                <div class="full-width-course-box">
+                    <div class="course-info">
+                        <h3>CRYPTO TRADING A-Z</h3>
+                        <ul class="course-features">
+                            <li>Language : Malayalam</li>
+                            <li>Community Access</li>
+                            <li>Bitcoin Vs Alt coins</li>
+                            <li>24*7 doubt Clearing</li>
+                            <li>Investment & Trading in crypto</li>
+                            <li>Account Opening</li>
+                            <li>Strategy in Crypto Trading</li>
+                        </ul>
+                    </div>
+                    <div class="course-action">
+                        <div class="price">
+                            <span class="discounted-price">Rs: 999/-</span>
+                            <span class="original-price">Rs: 1599/-</span>
+                        </div>
+                        <a href="https://wa.me/919074001420" class="whatsapp-link">Contact us on WhatsApp</a>
+                        <div class="warning">nb: Verify course content quality</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1051,30 +1256,50 @@
         </div>
     </section>
 
-    <div class="social-icons">
-        <a href="https://wa.me/919074001420" target="_blank">
-            <img src="/placeholder.svg?height=30&width=30" alt="WhatsApp">
-        </a>
-        <a href="https://www.instagram.com/finwealth_grow/" target="_blank">
-            <img src="/placeholder.svg?height=30&width=30" alt="Instagram">
-        </a>
-        <a href="https://www.facebook.com/profile.php?id=61561325323131" target="_blank">
-            <img src="/placeholder.svg?height=30&width=30" alt="Facebook">
-        </a>
-        <a href="https://youtube.com/@strategymastery-me9wl" target="_blank">
-            <img src="/placeholder.svg?height=30&width=30" alt="YouTube">
-        </a>
-        <a href="https://x.com/tradeadvthomas" target="_blank">
-            <img src="/placeholder.svg?height=30&width=30" alt="X">
-        </a>
+    <div class="faq-section">
+        <div class="faq-item">
+            <button class="faq-question">How do I enroll in a course?</button>
+            <div class="faq-answer">
+                You can enroll by contacting us via the whatsapp or clicking 'Enroll Now' on the course
+                details page.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Are the courses online or in-person?</button>
+            <div class="faq-answer">
+                All our courses are available online and recorded, with flexible schedules to suit your needs.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">What support is provided during the courses?</button>
+            <div class="faq-answer">
+                You'll receive ongoing support from our expert instructors through whatsapp, live Q&amp;A sessions, and
+                message assistance.
+            </div>
+        </div>
     </div>
 
-    <footer>
-        <div class="whatsApp-footer">
-            <a href="https://wa.me/919074001420" target="_blank">
+    <div class="social-icons">
+        <!-- <a href="https://wa.me/919074001420" target="_blank">
                 <img src="/placeholder.svg?height=30&width=30" alt="WhatsApp">
-            </a>
-        </div>
+            </a> -->
+        <a href="https://wa.me/919074001420" target="_blank">
+            <img src="./images/whatsapp.png" alt="WhatsApp">
+        </a>
+        <a href="https://www.instagram.com/finwealth_grow/" target="_blank">
+            <img src="./images/instagram.png" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61561325323131" target="_blank">
+            <img src="./images/facebook.png" alt="Facebook">
+        </a>
+        <a href="https://youtube.com/@strategymastery-me9wl" target="_blank">
+            <img src="./images/youtube.png" alt="YouTube">
+        </a>
+    </div>
+    <footer>
+
         <div class="footer-container">
             <div class="address">
                 <h4>Contact Us</h4>
@@ -1094,7 +1319,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Fin Wealth Grow. All Rights Reserved.</p>
+            <p>&copy; 2025 Fin Wealth Grow. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -1136,6 +1361,17 @@
                 }
             });
         });
+
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+
+
     </script>
 </body>
 

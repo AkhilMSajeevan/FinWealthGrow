@@ -1058,6 +1058,26 @@
                 padding: 0 5px;
             }
 
+            .hero-bg-image {
+                position: absolute;
+                top: -35%;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url('./images/fin-wealth-logo.png') no-repeat center center;
+                background-size: contain;
+                opacity: 0.15;
+                z-index: 1;
+                pointer-events: none;
+                
+            }
+
+            /* Ensure .hero-content is above the image */
+            .hero-content {
+                position: relative;
+                z-index: 2;
+            }
+
             .hero p {
                 font-size: 1.1rem;
                 margin: 20px 0;
@@ -1219,6 +1239,7 @@
 
     <section id="home" class="hero">
         <div class="overlay"></div>
+        <div class="hero-bg-image"></div>
         <div class="hero-content">
             <h1>GROW YOUR WEALTH WITH FIN WEALTH <span class="highlight">GROW</span></h1>
             <p>Your Trusted Mentor in the Stock Market Education</p>
@@ -1419,11 +1440,9 @@
             <div class="address">
                 <h4>Contact Us</h4>
                 <p>Fin Wealth Grow</p>
-                <p>Address- Rajendran Complex, 2nd</p>
-                <p>cross, Gowda Layout, BTM 1st</p>
-                <p>stage, MADIWALA, BANGALORE</p>
-                <p>-560029</p>
+                <p> Whatsapp No: +919074001420</p>
                 <p>Email: masterystrategy@gmail.com</p>
+                <p>Kochi, Kerala</p>
             </div>
             <div class="quick-links">
                 <h4>Quick Links</h4>
